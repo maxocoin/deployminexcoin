@@ -1,40 +1,36 @@
 ---
 # file: roles/dependencies/tasks/main.yml
 
-#- name: "FIX Ubuntu 16.04 LTS does not come with certain modules, required by ansible"
-#  raw: 'apt-get install python-minimal aptitude -y'
-#  become: true
+  - name: "FIX Ubuntu 16.04 LTS does not come with certain modules, required by ansible"
+    raw: apt-get install python-minimal aptitude -y
+    become: true
 
-- name: Adds the bitcoin repository for install db4.8 packages 
-  apt_repository:
-    repo: 'ppa:bitcoin/bitcoin'  
-  become: true
+  - name: Adds the bitcoin repository for install db4.8 packages 
+    apt_repository:
+      repo: 'ppa:bitcoin/bitcoin'  
+    become: true
   
   
-- name: Update and upgrade apt packages
-  apt:
-    upgrade: yes
-    update_cache: yes
-    cache_valid_time: 86400 #One day
-  become: true
-- name: Install all the required  packages
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - install
-    - libboost-system-dev
-    - libboost-filesystem-dev
-    - libboost-chrono-dev
-    - libboost-program-options-dev
-    - libboost-test-dev
-    - libboost-thread-dev
-    - software-properties-common
-    - libdb4.8-dev
-    - libdb4.8++-dev
-  become: true
-  
-
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+    become: true
     
--    
- 
+  - name: Install all the required  packages
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - libboost-system-dev
+      - libboost-filesystem-dev
+      - libboost-chrono-dev
+      - libboost-program-options-dev
+      - libboost-test-dev
+      - libboost-thread-dev
+      - software-properties-common
+      - libdb4.8-dev
+      - libdb4.8++-dev
+    become: true
+  
