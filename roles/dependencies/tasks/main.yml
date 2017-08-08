@@ -33,4 +33,31 @@
       - libdb4.8-dev
       - libdb4.8++-dev
     become: true
+
+
+  - name: Create downloads directory
+    file: path={{ downloads_dir }} state=directory    
+   
+  - name: download the open ssl 1.1 packages
+    get_url:
+      url: "{{openssl_1_1_host}}/{{ item }}"
+      dest: "{{ downloads_dir }}/{{ item }}" 
+    with_items:
+      - openssl_1.1.0c-2~bpo8+1_amd64.deb
+      - libssl-dev_1.1.0c-2~bpo8+1_amd64.deb
+      - libssl1.1_1.1.0c-2~bpo8+1_amd64.deb
+      
+      
+  - name: Install all the open ssl 1.1  packages
+    apt:
+      deb: "{{ downloads_dir }}/{{ item }}"
+      state: present
+    with_items:      
+      - libssl-dev_1.1.0c-2~bpo8+1_amd64.deb
+      - libssl1.1_1.1.0c-2~bpo8+1_amd64.deb
+      - openssl_1.1.0c-2~bpo8+1_amd64.deb
+    become: true
+    
+
+       
   

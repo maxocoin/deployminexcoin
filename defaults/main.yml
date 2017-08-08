@@ -8,3 +8,5 @@ downloads_dir: "{{ ansible_env.HOME }}/downloads"
 minexcoin_dist_server: http://minexcoin.com/bin/linux
 minexcoin_dist_file: minexcoin-linux.zip
 
+openssl_1_1_host: https://breakpoint.cc/openssl-110c-rebuild-for-jessie/
+
