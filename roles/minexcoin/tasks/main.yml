@@ -1,0 +1,30 @@
+---
+
+- name: Create downloads directory
+  file: path={{ downloads_dir }} state=directory
+
+  
+- name: Checks if minexcoin is already installed
+  stat: path={{ installs_dir }}/{{ minexcoin_install_dir }}
+  register: minexcoin_dir_stat
+  
+- name: Download Minexcoin 
+  get_url:
+    url: "{{minexcoin_dist_server}}/{{minexcoin_dist_file}}"
+    dest: "{{ downloads_dir }}/{{minexcoin_dist_file}}" 
+  when: minexcoin_dir_stat.stat.isdir is not defined   
+  
+  
+- name: Find out the name of the expanded directory
+  shell: tar tf {{ downloads_dir }}/{{minexcoin_dist_file}}  | head -1 | sed -e 's/\/.*//'
+  changed_when: false
+  register: tar_folder_name
+  
+- name: Create install directory
+  file: path={{ installs_dir }}/{{ minexcoin_install_dir }} state=directory  
+  when: minexcoin_dir_stat.stat.isdir is not defined   
+  
+- name: Expand minexcoin
+  unarchive: src={{downloads_dir}}/{{minexcoin_dist_file}} dest={{ installs_dir }}/{{ minexcoin_install_dir }} remote_src=yes
+  become: yes
+  when: minexcoin_dir_stat.stat.isdir is not defined   
