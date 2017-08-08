@@ -2,7 +2,11 @@
 # file: installMinexcoin.yml
 
 - hosts: all
+
+  vars_files:
+    - 'defaults/main.yml'
+    
   roles:
     - dependencies
-    #- minexcoin
+    - minexcoin
     #- startmining 
