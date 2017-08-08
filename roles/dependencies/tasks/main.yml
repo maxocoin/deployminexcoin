@@ -32,6 +32,8 @@
       - software-properties-common
       - libdb4.8-dev
       - libdb4.8++-dev
+      - libminiupnpc-dev
+      - libminiupnpc10
     become: true
 
 
@@ -53,8 +55,8 @@
       deb: "{{ downloads_dir }}/{{ item }}"
       state: present
     with_items:      
-      - libssl-dev_1.1.0c-2~bpo8+1_amd64.deb
       - libssl1.1_1.1.0c-2~bpo8+1_amd64.deb
+      - libssl-dev_1.1.0c-2~bpo8+1_amd64.deb
       - openssl_1.1.0c-2~bpo8+1_amd64.deb
     become: true
     
