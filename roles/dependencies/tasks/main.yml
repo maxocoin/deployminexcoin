@@ -34,6 +34,7 @@
       - libdb4.8++-dev
       - libminiupnpc-dev
       - libminiupnpc10
+      - libevent-pthreads   
     become: true
 
 
