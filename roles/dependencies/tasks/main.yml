@@ -34,7 +34,9 @@
       - libdb4.8++-dev
       - libminiupnpc-dev
       - libminiupnpc10
-      - libevent-pthreads   
+      - libzmq5
+      - libevent-2.0-5
+      - libevent-pthreads-2.0-5
     become: true
 
 
