@@ -23,8 +23,12 @@
 - name: Create install directory
   file: path={{ installs_dir }}/{{ minexcoin_install_dir }} state=directory  
   when: minexcoin_dir_stat.stat.isdir is not defined   
-  
+
+# check that minexcoind is installed not the directory  
 - name: Expand minexcoin
   unarchive: src={{downloads_dir}}/{{minexcoin_dist_file}} dest={{ installs_dir }}/{{ minexcoin_install_dir }} remote_src=yes
   become: yes
   when: minexcoin_dir_stat.stat.isdir is not defined   
+
+
+# CReate the .minexcoin.conf file
