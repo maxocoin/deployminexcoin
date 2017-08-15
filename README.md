@@ -17,3 +17,9 @@ Install ansible with
  sudo apt-add-repository ppa:ansible/ansible
  sudo apt-get update
  sudo apt-get install ansible
+
+
+Run the ansible script
+
+  ansible-playbook -i hosts installMinexcoin.yml
+
