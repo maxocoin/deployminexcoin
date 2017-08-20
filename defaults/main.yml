@@ -2,11 +2,20 @@
 
 installs_dir: "{{ ansible_env.HOME }}"
 minexcoin_install_dir: minexcoin
+mxminer_install_dir: mxminer
 downloads_dir: "{{ ansible_env.HOME }}/downloads"
 
 
 minexcoin_dist_server: http://minexcoin.com/bin/linux
 minexcoin_dist_file: minexcoin-linux.zip
 
+mxminer_dist_server: http://eu.minexpool.nl/static
+mxminer_dist_file: mxMiner_0.12b.zip
+mxminer_program: "{{ installs_dir }}/{{ mxminer_install_dir }}/Linux\ x64/mxminer"
+
 openssl_1_1_host: https://breakpoint.cc/openssl-110c-rebuild-for-jessie/
 
+region: eu
+mining_address: XPm9oEL6GKPkSuDdvpAawkrRie5qE3uieF
+worker: linux
+number_of_cores: 1

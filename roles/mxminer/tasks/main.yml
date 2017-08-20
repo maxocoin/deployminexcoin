@@ -1,0 +1,37 @@
+---
+
+- name: Create downloads directory
+  file: path={{ downloads_dir }} state=directory
+
+  
+- name: Checks if mxminer is already installed
+  stat: path= "{{mxminer_program}}"
+  register: mxminere_stat
+  
+- name: Download mxminer 
+  get_url:
+    url: "{{mxminer_dist_server}}/{{mxminer_dist_file}}"
+    dest: "{{ downloads_dir }}/{{mxminer_dist_file}}" 
+  when: mxminere_stat.stat.exists == False 
+  
+  
+- name: Find out the name of the expanded directory
+  shell: tar tf {{ downloads_dir }}/{{mxminer_dist_file}}  | head -1 | sed -e 's/\/.*//'
+  changed_when: false
+  register: tar_folder_name
+  
+- name: Create install directory
+  file: path={{ installs_dir }}/{{ mxminer_install_dir }} state=directory  
+  when: mxminere_stat.stat.exists == False   
+  
+- name: Expand mxminer
+  unarchive: src={{downloads_dir}}/{{mxminer_dist_file}} dest={{ installs_dir }}/{{ mxminer_install_dir }} remote_src=yes
+  when: mxminere_stat.stat.exists == False   
+  
+- name: Sets the miner execution attribute 
+  file: path="{{mxminer_program}}" mode="u+rwx,g+rx,o+rx"  
+  
+  
+- name: Copy the starting script 
+  template: src=../templates/start_mining.sh.j2  dest="{{ installs_dir }}/{{ mxminer_install_dir }}/Linux x64/start_mining.sh"  mode="u+rwx,g+rx,o+rx"  
+  when: mxminere_stat.stat.exists == False 
