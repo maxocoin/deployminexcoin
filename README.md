@@ -5,7 +5,7 @@ First you have to install git with
 
 ```
 sudo apt-get update
-sudo apt-get install git
+sudo apt-get install git tmux
 ```
 
 Then check out the proyect with the command
