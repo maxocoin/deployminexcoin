@@ -3,6 +3,7 @@ Ansible scripts that deploys the Minexcoin wallet on fleshly installet Ubuntu 16
 
 First you have to install git with
 
+sudo apt-get update
 sudo apt-get install git
 
 
