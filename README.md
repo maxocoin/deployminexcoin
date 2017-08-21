@@ -27,8 +27,8 @@ For install the Minex Coin Core wallet, run the ansible script
 `  ansible-playbook -i hosts installMinexcoin.yml`
   
  
-For install the miner, change the mining_address variable  in the file defaults/main.yml
-and type 
+For install the miner, change the `mining_address variable`  in the file `defaults/main.yml`
+and type: 
    
 `   ansible-playbook -i hosts installMxMiner.yml`
 
