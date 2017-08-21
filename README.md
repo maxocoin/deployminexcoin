@@ -8,7 +8,8 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
-Then check out the proyect with the commandç
+Then check out the proyect with the command
+
 `git clone https://github.com/maxocoin/deployminexcoin.git`
 
 
