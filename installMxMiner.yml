@@ -1,6 +1,7 @@
 ---
 # file: installMinexcoin.yml
 
+#- hosts: "{{ variable_host | default('localhost') }}"
 - hosts: all
 
   vars_files:

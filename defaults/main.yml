@@ -10,7 +10,7 @@ minexcoin_dist_server: http://minexcoin.com/bin/linux
 minexcoin_dist_file: minexcoin-linux.zip
 
 mxminer_dist_server: http://eu.minexpool.nl/static
-mxminer_dist_file: mxMiner_0.12b.zip
+mxminer_dist_file: mxMiner_0.16.zip
 mxminer_program: "{{ installs_dir }}/{{ mxminer_install_dir }}/Linux\ x64/mxminer"
 
 openssl_1_1_host: https://breakpoint.cc/openssl-110c-rebuild-for-jessie/

@@ -1,4 +1,13 @@
 ---
+  
+- name: Install  the required  packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - zip
+    - tmux
+  become: true
 
 - name: Create downloads directory
   file: path={{ downloads_dir }} state=directory
